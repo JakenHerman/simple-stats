@@ -1,17 +1,17 @@
 from __future__ import division
 
-ages = [35, 52, 45, 70, 24, 43, 68, 77, 45]
+ages = [35, 52, 45, 70, 24, 43, 68, 77, 45, 28]
 
-def minimum():
-    minimum = ages[0]
-    for age in ages:
-        minimum = age if (age < minimum) else minimum
+def minimum(stats):
+    minimum = stats[0]
+    for stat in stats:
+        minimum = stat if (stat < minimum) else minimum
     return minimum
 
-def maximum():
-    maximum = ages[0]
-    for age in ages:
-        maximum = age if (age > maximum) else maximum
+def maximum(stats):
+    maximum = stats[0]
+    for stat in stats:
+        maximum = stat if (stat > maximum) else maximum
     return maximum
 
 def mean(stats):
@@ -46,4 +46,6 @@ def median(stats):
         return mean([stats[half-1], stats[half]])
     return stats[half]
 
-        
+def range(stats):
+    return maximum(stats) - minimum(stats)
+
