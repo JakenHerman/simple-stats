@@ -1,26 +1,25 @@
 from __future__ import division
 
-ages = [35, 52, 45, 70, 24, 43, 68, 77, 45, 28]
+ages = [35, 52, 45, 70, 24, 43, 68, 77, 45]
 
 def minimum():
-        minimum = ages[0]
-        for age in ages:
-             minimum = age if (age < minimum) else minimum
-        return minimum
+    minimum = ages[0]
+    for age in ages:
+        minimum = age if (age < minimum) else minimum
+    return minimum
 
 def maximum():
-        maximum = ages[0]
-        for age in ages:
-               maximum = age if (age > maximum) else maximum
-        return maximum
+    maximum = ages[0]
+    for age in ages:
+        maximum = age if (age > maximum) else maximum
+    return maximum
 
 def mean(stats):
-        mean, count = 0, 0
-        for stat in stats:
-               mean += stat
-               count += 1
-        mean /= count
-        return mean
+    mean = 0
+    for stat in stats:
+        mean += stat
+    mean /= len(stats)
+    return mean
         
 # selection sort declaration
 def sort(stats):
@@ -36,16 +35,15 @@ def sort(stats):
 # mode function declaration
 def mode(stats):
     m = max(list(map(stats.count, stats)))
-        #returns a list, as there may be more than one mode
+    #returns a list, as there may be more than one mode
     return list(set(filter(lambda i: stats.count(i) == m, stats)))
 
 # median function declaration
 def median(stats):
-        sort(stats)
-        if count % 2 == 0:
-           even_m = [stats[round(count/2)], stats[(round(count/2)+1)]]
-                     return mean(even_m)
-        return stats[round(count/2)]
+    sort(stats)
+    half = round(len(stats)/2)
+    if len(stats) % 2 == 0:
+        return mean([stats[half-1], stats[half]])
+    return stats[half]
 
-print(median(ages))
         
