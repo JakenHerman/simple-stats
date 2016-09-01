@@ -1,8 +1,8 @@
 #imports
-from __future__ import division
-import math
+#from __future__ import division
+#import math
 
-#our sample data
+#sample data
 ages = [35, 52, 45, 70, 24, 43, 68, 77, 45, 28]
 
 #minimum function declaration
@@ -30,7 +30,7 @@ def mean(stats):
     #divide by the length of stats list to obtain mean    
     mean /= len(stats)
     return mean
-        
+
 # selection sort declaration
 def sort(stats):
     for i in reversed(range(len(stats))):
@@ -73,7 +73,17 @@ def median(stats):
     return stats[half]
 
 #range function declaration
-def range(stats):
+def xrange(stats):
     #return maximum value entity with the minimum 
     #value entity subtracted from it
     return maximum(stats) - minimum(stats)
+
+#quartile function declaration
+def quartile(stats):
+    return "Quartile 0% : " + str(minimum(stats))+"\n"+\
+           "Quartile 25% : " + str(median(stats[:round((len(stats)/2)-1)]))+"\n"+\
+           "Quartile 50% : " + str(median(stats))+"\n"+\
+           "Quartile 75% : " + str(median(stats[round((len(stats)/2)+1):]))+"\n"+\
+           "Quartile 100% : " + str(maximum(stats))+"\n"
+
+
