@@ -1,4 +1,5 @@
 from __future__ import division
+import math
 
 ages = [35, 52, 45, 70, 24, 43, 68, 77, 45, 28]
 
@@ -37,6 +38,17 @@ def mode(stats):
     m = max(list(map(stats.count, stats)))
     #returns a list, as there may be more than one mode
     return list(set(filter(lambda i: stats.count(i) == m, stats)))
+
+#def standard_deviation(stats):
+    #math.sqrt((1 / len(stats)))
+
+def variance(stats):
+    #absolute value distance from mean, squared
+    sum = 0
+    for stat in stats:
+        sum += abs(stat - mean(stats))**2
+    #divided by n numbers in stats list
+    return "{0:.2f}".format(sum/(len(stats)-1))
 
 # median function declaration
 def median(stats):
