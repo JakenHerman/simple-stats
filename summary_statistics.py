@@ -1,6 +1,8 @@
 #imports
-#from __future__ import division
-#import math
+from __future__ import division
+from scipy import stats
+import numpy as np
+import math
 
 #sample data
 ages = [35, 52, 45, 70, 24, 43, 68, 77, 45, 28]
@@ -73,17 +75,38 @@ def median(stats):
     return stats[half]
 
 #range function declaration
-def xrange(stats):
+def m_range(stats):
     #return maximum value entity with the minimum 
     #value entity subtracted from it
     return maximum(stats) - minimum(stats)
 
+#z-score function declaration using scipy
+def z_score(m_stats):
+    np_stats = np.array(m_stats)
+    return stats.zscore(np_stats)
+
+#kurtosis function declaration using scipy
+def m_kurtosis(m_stats, m_fisher):
+    np_stats = np.array(m_stats)
+    return stats.kurtosis(np_stats, fisher=m_fisher)
+
+#skewness function declaration using scipy
+def m_skewness(m_stats):
+    np_stats = np.array(m_stats)
+    return stats.skew(np_stats)
+
 #quartile function declaration
 def quartile(stats):
-    return "Quartile 0% : " + str(minimum(stats))+"\n"+\
+    return "\nQuartile 0% : " + str(minimum(stats))+"\n"+\
            "Quartile 25% : " + str(median(stats[:round((len(stats)/2)-1)]))+"\n"+\
            "Quartile 50% : " + str(median(stats))+"\n"+\
            "Quartile 75% : " + str(median(stats[round((len(stats)/2)+1):]))+"\n"+\
-           "Quartile 100% : " + str(maximum(stats))+"\n"
+           "Quartile 100% : " + str(maximum(stats))
 
-
+#print the results
+print("Mode : ", mode(ages), "\nMedian : ", median(ages)\
+      ,"\nMean : ", mean(ages), "\nRange : ", m_range(ages)\
+      , quartile(ages), "\nVariance : ", variance(ages)\
+      ,"\nStandard Deviation : ", standard_deviation(ages)\
+      ,"\nZ-Score : ", z_score(ages), "\nSkewness : ", m_skewness(ages) \
+      , "\nKurtosis : ", m_kurtosis(ages, False))
