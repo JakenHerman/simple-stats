@@ -1,5 +1,5 @@
 language: python
 #command to install dependencies
 install:
-  - pip install scipy
-  - pip install numpy
+  - easy_install install scipy
+  - easy_install install numpy
